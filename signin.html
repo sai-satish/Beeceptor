@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card shadow-lg" style="width: 100%; max-width: 400px;">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Login</h3>
+
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email/Phone No</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+
+                    
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Password</label>
+                        <input type="password" name="pwd" id="pwd" class="form-control" required>
+                    </div>
+
+                    <div id="error-message" class="text-danger mb-3" style="display: none;">
+                        User not found. Please check your credentials.
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+
+                    
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-muted">Forgot Password?</a>
+                        <br>
+                        <a href="/signup" class="text-muted">Create an Account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="backend_logic.js"></script>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const form = document.getElementById('loginForm');
+
+            // Attach an event listener to the form submit event
+            form.addEventListener('submit', function (event) {
+                // Prevent the form from submitting in the default way (page reload)
+                event.preventDefault();
+
+                // Gather the form data
+                const formData = new FormData(form);
+
+                // Convert form data to a plain object (use the formData entries)
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                
+                const endpoint = 'https://demo-beerceptor.free.beeceptor.com/signin';
+
+                // Send the form data to the endpoint via a POST request
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then(response => response.json()) 
+                    .then(data => {
+                        // console.log('Success:', data);  
+
+                        if (!data.status) {
+                            const message = document.getElementById("error-message");
+
+                            // Showing error message
+                            message.style.display = "block";
+
+                            // Set a timeout to hide the message and redirect after 3 seconds
+                            setTimeout(() => {
+                                message.style.display = "none"; // Hide the error message
+                                window.history.pushState('page2', 'Title', '/signup');
+                                window.location.href = 'http://localhost:5000/signup';
+                                // Redirect to the sign-up page
+                            }, 3000); // 3000ms = 3 seconds
+                        } else {
+                            // Handle successful login
+                            alert('Login successful');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);  // Handle any errors
+                    });
+            });
+        });
+    </script> -->
+</body>
+
+</html>
